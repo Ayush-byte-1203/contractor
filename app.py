@@ -5,7 +5,7 @@ import os
 import json
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'your-secret-key-here'
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'your-secret-key-here')
 CORS(app)
 
 # Database file
@@ -539,10 +539,14 @@ if __name__ == '__main__':
     init_db()
     print("✓ Database initialized successfully.")
     
+    # Get port from environment variable (for Render deployment)
+    port = int(os.environ.get('PORT', 5001))
+    
     print("\nStarting the application...")
-    print("Website will be available at: http://localhost:5001")
-    print("Admin panel will be available at: http://localhost:5001/admin")
+    print(f"Website will be available at: http://localhost:{port}")
+    print(f"Admin panel will be available at: http://localhost:{port}/admin")
     print("\nPress Ctrl+C to stop the server.")
     print("-" * 50)
     
-    app.run(debug=True, host='0.0.0.0', port=5001) 
+    # Use debug=False for production
+    app.run(debug=False, host='0.0.0.0', port=port) 
