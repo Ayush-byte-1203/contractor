@@ -1,22 +1,67 @@
+<!--
+BuildPro Connect - Base HTML Template
+=====================================
+
+This is the base template that provides the common structure for all pages
+in the BuildPro Connect website. It includes the navigation, footer, and
+common elements that appear on every page.
+
+Features:
+- Responsive navigation with mobile hamburger menu
+- Footer with company information and links
+- Quote request modal
+- Common CSS and JavaScript includes
+- Jinja2 template inheritance support
+
+Template Blocks:
+- title: Page title (defaults to site title)
+- content: Main page content
+- extra_css: Additional CSS for specific pages
+- extra_js: Additional JavaScript for specific pages
+
+Author: BuildPro Connect Team
+Version: 1.0.0
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Page Title -->
+    <!-- Uses Jinja2 template inheritance - child pages can override this -->
     <title>{% block title %}BuildPro Connect - Professional Construction Services{% endblock %}</title>
+    
+    <!-- Stylesheets -->
+    <!-- Main CSS file for the application -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    
+    <!-- Font Awesome Icons -->
+    <!-- CDN link for icons used throughout the site -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <!-- Inter font family for modern, clean typography -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Additional CSS for child pages -->
     {% block extra_css %}{% endblock %}
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Navigation Bar -->
+    <!-- Fixed position navbar with logo, menu items, and mobile hamburger -->
     <nav class="navbar">
         <div class="nav-container">
+            <!-- Logo Section -->
             <div class="nav-logo">
                 <i class="fas fa-hammer"></i>
                 <span>BuildPro Connect</span>
             </div>
+            
+            <!-- Navigation Menu -->
+            <!-- Desktop menu with all main navigation links -->
             <ul class="nav-menu">
                 <li><a href="{{ url_for('index') }}" class="nav-link">Home</a></li>
                 <li><a href="{{ url_for('contractors') }}" class="nav-link">Contractors</a></li>
@@ -25,8 +70,12 @@
                 <li><a href="{{ url_for('services') }}" class="nav-link">Services</a></li>
                 <li><a href="{{ url_for('index') }}#about" class="nav-link">About</a></li>
                 <li><a href="{{ url_for('index') }}#contact" class="nav-link">Contact</a></li>
+                <!-- Call-to-Action Button -->
                 <li><button class="cta-button" onclick="openModal('quoteModal')">Get Quote</button></li>
             </ul>
+            
+            <!-- Mobile Hamburger Menu -->
+            <!-- Three-line menu icon for mobile devices -->
             <div class="hamburger">
                 <span></span>
                 <span></span>
@@ -35,15 +84,18 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
+    <!-- Main Content Area -->
+    <!-- This is where child templates will insert their content -->
     <main>
         {% block content %}{% endblock %}
     </main>
 
-    <!-- Footer -->
+    <!-- Footer Section -->
+    <!-- Site footer with company information, links, and contact details -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
+                <!-- Company Information -->
                 <div class="footer-section">
                     <div class="footer-logo">
                         <i class="fas fa-hammer"></i>
@@ -51,6 +103,8 @@
                     </div>
                     <p>Building excellence, one project at a time.</p>
                 </div>
+                
+                <!-- Quick Links -->
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul>
@@ -60,6 +114,8 @@
                         <li><a href="{{ url_for('services') }}">Services</a></li>
                     </ul>
                 </div>
+                
+                <!-- Contact Information -->
                 <div class="footer-section">
                     <h3>Contact</h3>
                     <p>+1 (555) 123-4567</p>
@@ -67,27 +123,42 @@
                     <p>123 Construction Ave, Building City, BC 12345</p>
                 </div>
             </div>
+            
+            <!-- Copyright Notice -->
             <div class="footer-bottom">
                 <p>&copy; 2024 BuildPro Connect. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Quote Modal -->
+    <!-- Quote Request Modal -->
+    <!-- Popup form for users to request project quotes -->
     <div id="quoteModal" class="modal">
         <div class="modal-content">
+            <!-- Close Button -->
             <span class="close" onclick="closeModal('quoteModal')">&times;</span>
+            
+            <!-- Modal Title -->
             <h2>Get Your Free Quote</h2>
+            
+            <!-- Quote Request Form -->
             <form id="quoteForm">
+                <!-- Name Field -->
                 <div class="form-group">
                     <input type="text" placeholder="Full Name" required>
                 </div>
+                
+                <!-- Email Field -->
                 <div class="form-group">
                     <input type="email" placeholder="Email Address" required>
                 </div>
+                
+                <!-- Phone Field -->
                 <div class="form-group">
                     <input type="tel" placeholder="Phone Number" required>
                 </div>
+                
+                <!-- Service Type Selection -->
                 <div class="form-group">
                     <select required>
                         <option value="">Select Service Type</option>
@@ -97,18 +168,28 @@
                         <option value="design">Design & Planning</option>
                     </select>
                 </div>
+                
+                <!-- Project Description -->
                 <div class="form-group">
                     <textarea placeholder="Project Description" rows="4" required></textarea>
                 </div>
+                
+                <!-- Budget Field (Optional) -->
                 <div class="form-group">
                     <input type="text" placeholder="Project Budget (Optional)">
                 </div>
+                
+                <!-- Submit Button -->
                 <button type="submit" class="primary-btn">Submit Quote Request</button>
             </form>
         </div>
     </div>
 
+    <!-- JavaScript Files -->
+    <!-- Main JavaScript file for interactive functionality -->
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    
+    <!-- Additional JavaScript for child pages -->
     {% block extra_js %}{% endblock %}
 </body>
 </html> 

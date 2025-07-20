@@ -1,19 +1,50 @@
-// Mobile Navigation Toggle
+/**
+ * BuildPro Connect - Main JavaScript File
+ * =======================================
+ * 
+ * This file contains all the interactive functionality for the BuildPro Connect
+ * website. It handles navigation, form submissions, animations, and user interactions.
+ * 
+ * Features:
+ * - Mobile navigation toggle
+ * - Smooth scrolling navigation
+ * - Modal windows for forms
+ * - Form validation and submission
+ * - Scroll animations and effects
+ * - Counter animations for statistics
+ * - Loading states and user feedback
+ * 
+ * Author: BuildPro Connect Team
+ * Version: 1.0.0
+ */
+
+// ============================================================================
+// NAVIGATION FUNCTIONALITY
+// ============================================================================
+
+/**
+ * Mobile Navigation Toggle
+ * Handles the hamburger menu for mobile devices
+ */
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
+// Toggle mobile menu when hamburger is clicked
 hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
     navMenu.classList.toggle('active');
 });
 
-// Close mobile menu when clicking on a link
+// Close mobile menu when clicking on a navigation link
 document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
     hamburger.classList.remove('active');
     navMenu.classList.remove('active');
 }));
 
-// Smooth scrolling for navigation links
+/**
+ * Smooth Scrolling Navigation
+ * Enables smooth scrolling for anchor links within the page
+ */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -27,7 +58,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Scroll to section function
+/**
+ * Scroll to Section Function
+ * Programmatically scroll to a specific section
+ * 
+ * @param {string} sectionId - The ID of the section to scroll to
+ */
 function scrollToSection(sectionId) {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -38,24 +74,39 @@ function scrollToSection(sectionId) {
     }
 }
 
-// Modal functionality
+// ============================================================================
+// MODAL FUNCTIONALITY
+// ============================================================================
+
+/**
+ * Open Modal Function
+ * Displays a modal window and prevents background scrolling
+ * 
+ * @param {string} modalId - The ID of the modal to open
+ */
 function openModal(modalId) {
     const modal = document.getElementById(modalId);
     if (modal) {
         modal.style.display = 'block';
-        document.body.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
     }
 }
 
+/**
+ * Close Modal Function
+ * Hides a modal window and restores background scrolling
+ * 
+ * @param {string} modalId - The ID of the modal to close
+ */
 function closeModal(modalId) {
     const modal = document.getElementById(modalId);
     if (modal) {
         modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
+        document.body.style.overflow = 'auto'; // Restore scrolling
     }
 }
 
-// Close modal when clicking outside
+// Close modal when clicking outside the modal content
 window.addEventListener('click', (e) => {
     if (e.target.classList.contains('modal')) {
         e.target.style.display = 'none';
@@ -63,23 +114,39 @@ window.addEventListener('click', (e) => {
     }
 });
 
-// Navbar background change on scroll
+// ============================================================================
+// NAVBAR EFFECTS
+// ============================================================================
+
+/**
+ * Navbar Background Change on Scroll
+ * Changes navbar appearance when user scrolls down
+ */
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 50) {
+        // Scrolled down - make navbar more opaque and add shadow
         navbar.style.background = 'rgba(255, 255, 255, 0.98)';
         navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
     } else {
+        // At top - make navbar semi-transparent and remove shadow
         navbar.style.background = 'rgba(255, 255, 255, 0.95)';
         navbar.style.boxShadow = 'none';
     }
 });
 
-// Form submission handling
+// ============================================================================
+// FORM HANDLING
+// ============================================================================
+
+/**
+ * Contact Form Submission Handler
+ * Handles the submission of the contact form on the homepage
+ */
 document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     
-    const formData = new FormData(this);
+    // Extract form data
     const data = {
         name: this.querySelector('input[type="text"]').value,
         email: this.querySelector('input[type="email"]').value,
@@ -88,6 +155,12 @@ document.getElementById('contactForm').addEventListener('submit', async function
     };
 
     try {
+        // Show loading state
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        showLoading(submitBtn);
+
+        // Send POST request to API
         const response = await fetch('/api/contact', {
             method: 'POST',
             headers: {
@@ -97,32 +170,49 @@ document.getElementById('contactForm').addEventListener('submit', async function
         });
 
         if (response.ok) {
+            // Success - show success message and reset form
             alert('Message sent successfully! We will get back to you soon.');
             this.reset();
         } else {
-            alert('Error sending message. Please try again.');
+            // Error - show error message
+            const errorData = await response.json();
+            alert(`Error: ${errorData.error || 'Failed to send message. Please try again.'}`);
         }
     } catch (error) {
+        // Network or other error
         console.error('Error:', error);
         alert('Error sending message. Please try again.');
+    } finally {
+        // Hide loading state
+        const submitBtn = this.querySelector('button[type="submit"]');
+        hideLoading(submitBtn, originalText);
     }
 });
 
-// Quote form submission
+/**
+ * Quote Form Submission Handler
+ * Handles the submission of the quote request form
+ */
 document.getElementById('quoteForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     
-    const formData = new FormData(this);
+    // Extract form data
     const data = {
         name: this.querySelector('input[type="text"]').value,
         email: this.querySelector('input[type="email"]').value,
         phone: this.querySelector('input[type="tel"]').value,
-        serviceType: this.querySelector('select').value,
+        service_type: this.querySelector('select').value, // Note: API expects service_type
         description: this.querySelector('textarea').value,
         budget: this.querySelector('input[placeholder*="Budget"]').value
     };
 
     try {
+        // Show loading state
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        showLoading(submitBtn);
+
+        // Send POST request to API
         const response = await fetch('/api/quote', {
             method: 'POST',
             headers: {
@@ -132,225 +222,222 @@ document.getElementById('quoteForm').addEventListener('submit', async function(e
         });
 
         if (response.ok) {
+            // Success - show success message, reset form, and close modal
             alert('Quote request submitted successfully! We will contact you within 24 hours.');
             this.reset();
             closeModal('quoteModal');
         } else {
-            alert('Error submitting quote request. Please try again.');
+            // Error - show error message
+            const errorData = await response.json();
+            alert(`Error: ${errorData.error || 'Failed to submit quote request. Please try again.'}`);
         }
     } catch (error) {
+        // Network or other error
         console.error('Error:', error);
         alert('Error submitting quote request. Please try again.');
+    } finally {
+        // Hide loading state
+        const submitBtn = this.querySelector('button[type="submit"]');
+        hideLoading(submitBtn, originalText);
     }
 });
 
-// Animate elements on scroll
+// ============================================================================
+// ANIMATIONS AND EFFECTS
+// ============================================================================
+
+/**
+ * Scroll Animation Observer Configuration
+ * Defines how elements should animate when they come into view
+ */
 const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    threshold: 0.1, // Trigger when 10% of element is visible
+    rootMargin: '0px 0px -50px 0px' // Trigger 50px before element enters viewport
 };
 
+/**
+ * Intersection Observer for Scroll Animations
+ * Animates elements when they come into view
+ */
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
+            // Element is visible - animate it in
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'translateY(0)';
         }
     });
 }, observerOptions);
 
-// Observe elements for animation
+/**
+ * Initialize Scroll Animations
+ * Sets up animations for service cards, project cards, and statistics
+ */
 document.addEventListener('DOMContentLoaded', () => {
     const animateElements = document.querySelectorAll('.service-card, .project-card, .stat');
     
     animateElements.forEach(el => {
+        // Set initial state (hidden and moved down)
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        
+        // Start observing the element
         observer.observe(el);
     });
 });
 
-// Counter animation for stats
+/**
+ * Counter Animation Function
+ * Animates a number from 0 to target value
+ * 
+ * @param {HTMLElement} element - The element containing the number
+ * @param {number} target - The target number to count to
+ * @param {number} duration - Animation duration in milliseconds
+ */
 function animateCounter(element, target, duration = 2000) {
     let start = 0;
-    const increment = target / (duration / 16);
+    const increment = target / (duration / 16); // 60fps animation
     
     const timer = setInterval(() => {
         start += increment;
         if (start >= target) {
+            // Animation complete
             element.textContent = target + '+';
             clearInterval(timer);
         } else {
+            // Update counter
             element.textContent = Math.floor(start) + '+';
         }
-    }, 16);
+    }, 16); // ~60fps
 }
 
-// Trigger counter animation when stats section is visible
+/**
+ * Statistics Counter Observer
+ * Triggers counter animations when stats section comes into view
+ */
 const statsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
+            // Stats section is visible - animate counters
             const stats = entry.target.querySelectorAll('.stat h3');
             stats.forEach(stat => {
                 const target = parseInt(stat.textContent);
                 animateCounter(stat, target);
             });
+            // Stop observing after animation is triggered
             statsObserver.unobserve(entry.target);
         }
     });
-}, { threshold: 0.5 });
+}, observerOptions);
 
+// Start observing the stats section
 document.addEventListener('DOMContentLoaded', () => {
-    const statsSection = document.querySelector('.stats');
+    const statsSection = document.querySelector('.stats-section');
     if (statsSection) {
         statsObserver.observe(statsSection);
     }
 });
 
-// Image lazy loading
-document.addEventListener('DOMContentLoaded', () => {
-    const images = document.querySelectorAll('img[data-src]');
-    
-    const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.remove('lazy');
-                imageObserver.unobserve(img);
-            }
-        });
-    });
+// ============================================================================
+// UTILITY FUNCTIONS
+// ============================================================================
 
-    images.forEach(img => imageObserver.observe(img));
-});
-
-// Service card hover effects
-document.addEventListener('DOMContentLoaded', () => {
-    const serviceCards = document.querySelectorAll('.service-card');
-    
-    serviceCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.style.transform = 'translateY(-10px) scale(1.02)';
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'translateY(0) scale(1)';
-        });
-    });
-});
-
-// Project card click handlers
-document.addEventListener('DOMContentLoaded', () => {
-    const projectCards = document.querySelectorAll('.project-card');
-    
-    projectCards.forEach(card => {
-        card.addEventListener('click', () => {
-            const projectTitle = card.querySelector('h3').textContent;
-            alert(`Viewing details for: ${projectTitle}\n\nThis would open a detailed project page in a real implementation.`);
-        });
-    });
-});
-
-// Form validation
+/**
+ * Form Validation Function
+ * Validates form inputs and shows error messages
+ * 
+ * @param {HTMLFormElement} form - The form element to validate
+ * @returns {boolean} - True if form is valid, false otherwise
+ */
 function validateForm(form) {
-    const inputs = form.querySelectorAll('input[required], textarea[required], select[required]');
     let isValid = true;
+    const inputs = form.querySelectorAll('input, textarea, select');
     
     inputs.forEach(input => {
-        if (!input.value.trim()) {
-            input.style.borderColor = '#e74c3c';
+        // Remove existing error styling
+        input.classList.remove('error');
+        
+        // Check if field is required and empty
+        if (input.hasAttribute('required') && !input.value.trim()) {
+            input.classList.add('error');
             isValid = false;
-        } else {
-            input.style.borderColor = '#ddd';
+        }
+        
+        // Email validation
+        if (input.type === 'email' && input.value) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(input.value)) {
+                input.classList.add('error');
+                isValid = false;
+            }
+        }
+        
+        // Phone validation (basic)
+        if (input.type === 'tel' && input.value) {
+            const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+            if (!phoneRegex.test(input.value.replace(/[\s\-\(\)]/g, ''))) {
+                input.classList.add('error');
+                isValid = false;
+            }
         }
     });
     
     return isValid;
 }
 
-// Add validation to forms
-document.addEventListener('DOMContentLoaded', () => {
-    const forms = document.querySelectorAll('form');
-    
-    forms.forEach(form => {
-        form.addEventListener('submit', (e) => {
-            if (!validateForm(form)) {
-                e.preventDefault();
-                alert('Please fill in all required fields.');
-            }
-        });
-    });
-});
-
-// Loading animation
+/**
+ * Show Loading State
+ * Shows a loading spinner on a button
+ * 
+ * @param {HTMLElement} element - The button element
+ */
 function showLoading(element) {
-    element.innerHTML = '<div class="loading">Loading...</div>';
     element.disabled = true;
+    element.innerHTML = '<span class="spinner"></span> Sending...';
 }
 
+/**
+ * Hide Loading State
+ * Restores the original button text
+ * 
+ * @param {HTMLElement} element - The button element
+ * @param {string} originalText - The original button text
+ */
 function hideLoading(element, originalText) {
-    element.innerHTML = originalText;
     element.disabled = false;
+    element.innerHTML = originalText;
 }
 
-// Enhanced form submission with loading states
-document.addEventListener('DOMContentLoaded', () => {
-    const submitButtons = document.querySelectorAll('form button[type="submit"]');
-    
-    submitButtons.forEach(button => {
-        const originalText = button.textContent;
-        
-        button.addEventListener('click', () => {
-            if (button.form && validateForm(button.form)) {
-                showLoading(button);
-                
-                // Simulate form submission delay
-                setTimeout(() => {
-                    hideLoading(button, originalText);
-                }, 2000);
-            }
-        });
-    });
-});
+// ============================================================================
+// ENHANCED USER EXPERIENCE
+// ============================================================================
 
-// Back to top button
+/**
+ * Back to Top Button
+ * Creates and manages a "back to top" button that appears when scrolling
+ */
 function createBackToTopButton() {
-    const backToTop = document.createElement('button');
-    backToTop.innerHTML = '<i class="fas fa-arrow-up"></i>';
-    backToTop.className = 'back-to-top';
-    backToTop.style.cssText = `
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background: #e74c3c;
-        color: white;
-        border: none;
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        font-size: 1.2rem;
-        cursor: pointer;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-        z-index: 1000;
-    `;
+    // Create button element
+    const backToTopBtn = document.createElement('button');
+    backToTopBtn.innerHTML = '↑';
+    backToTopBtn.className = 'back-to-top';
+    backToTopBtn.title = 'Back to top';
     
-    document.body.appendChild(backToTop);
+    // Add to page
+    document.body.appendChild(backToTopBtn);
     
+    // Show/hide button based on scroll position
     window.addEventListener('scroll', () => {
         if (window.scrollY > 300) {
-            backToTop.style.opacity = '1';
-            backToTop.style.visibility = 'visible';
+            backToTopBtn.style.display = 'block';
         } else {
-            backToTop.style.opacity = '0';
-            backToTop.style.visibility = 'hidden';
+            backToTopBtn.style.display = 'none';
         }
     });
     
-    backToTop.addEventListener('click', () => {
+    // Scroll to top when clicked
+    backToTopBtn.addEventListener('click', () => {
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
@@ -358,117 +445,69 @@ function createBackToTopButton() {
     });
 }
 
-// Initialize back to top button
-document.addEventListener('DOMContentLoaded', createBackToTopButton);
-
-// Preloader
+/**
+ * Preloader Function
+ * Shows a loading screen while the page is loading
+ */
 function createPreloader() {
+    // Create preloader element
     const preloader = document.createElement('div');
     preloader.className = 'preloader';
     preloader.innerHTML = `
         <div class="preloader-content">
-            <i class="fas fa-hammer"></i>
-            <h3>BuildPro Connect</h3>
-            <div class="loading-bar"></div>
+            <div class="spinner"></div>
+            <p>Loading BuildPro Connect...</p>
         </div>
     `;
-    preloader.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-        transition: opacity 0.5s ease;
-    `;
     
-    const preloaderContent = preloader.querySelector('.preloader-content');
-    preloaderContent.style.cssText = `
-        text-align: center;
-        color: white;
-    `;
-    
-    const icon = preloader.querySelector('i');
-    icon.style.cssText = `
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        animation: hammer 1s infinite;
-    `;
-    
-    const title = preloader.querySelector('h3');
-    title.style.cssText = `
-        font-size: 1.5rem;
-        margin-bottom: 2rem;
-    `;
-    
-    const loadingBar = preloader.querySelector('.loading-bar');
-    loadingBar.style.cssText = `
-        width: 200px;
-        height: 4px;
-        background: rgba(255, 255, 255, 0.3);
-        border-radius: 2px;
-        overflow: hidden;
-        position: relative;
-    `;
-    
-    const loadingProgress = document.createElement('div');
-    loadingProgress.style.cssText = `
-        width: 0%;
-        height: 100%;
-        background: white;
-        border-radius: 2px;
-        transition: width 0.3s ease;
-    `;
-    loadingBar.appendChild(loadingProgress);
-    
+    // Add to page
     document.body.appendChild(preloader);
     
-    // Simulate loading progress
-    let progress = 0;
-    const interval = setInterval(() => {
-        progress += Math.random() * 30;
-        if (progress >= 100) {
-            progress = 100;
-            clearInterval(interval);
+    // Hide preloader when page is loaded
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            preloader.style.opacity = '0';
             setTimeout(() => {
-                preloader.style.opacity = '0';
-                setTimeout(() => {
-                    preloader.remove();
-                }, 500);
-            }, 500);
-        }
-        loadingProgress.style.width = progress + '%';
-    }, 200);
+                preloader.remove();
+            }, 300);
+        }, 500);
+    });
 }
 
-// Add CSS for animations
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes hammer {
-        0%, 100% { transform: rotate(0deg); }
-        50% { transform: rotate(15deg); }
-    }
-    
-    .loading {
-        display: inline-block;
-        width: 20px;
-        height: 20px;
-        border: 3px solid #f3f3f3;
-        border-top: 3px solid #e74c3c;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-    }
-    
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-`;
-document.head.appendChild(style);
+// ============================================================================
+// INITIALIZATION
+// ============================================================================
 
-// Initialize preloader
-window.addEventListener('load', createPreloader); 
+/**
+ * Initialize All Features
+ * Sets up all interactive features when the DOM is loaded
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    // Create enhanced user experience features
+    createBackToTopButton();
+    createPreloader();
+    
+    // Initialize any additional features here
+    console.log('BuildPro Connect - JavaScript initialized successfully');
+});
+
+/**
+ * Error Handling
+ * Global error handler for unhandled JavaScript errors
+ */
+window.addEventListener('error', (e) => {
+    console.error('JavaScript Error:', e.error);
+    // You could send this to an error tracking service
+});
+
+/**
+ * Performance Monitoring
+ * Logs page load performance metrics
+ */
+window.addEventListener('load', () => {
+    // Log performance metrics
+    if ('performance' in window) {
+        const perfData = performance.getEntriesByType('navigation')[0];
+        console.log('Page Load Time:', perfData.loadEventEnd - perfData.loadEventStart, 'ms');
+    }
+}); 

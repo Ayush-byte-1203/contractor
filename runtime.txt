@@ -1,1 +1,15 @@
+# BuildPro Connect - Python Runtime Specification
+# ==============================================
+#
+# This file specifies the Python version to use for the application.
+# It ensures consistent Python versions across different deployment environments.
+#
+# The version specified here should match the version used in development
+# and should be compatible with all dependencies in requirements.txt.
+#
+# Author: BuildPro Connect Team
+# Version: 1.0.0
+
+# Python version for the application
+# Using Python 3.9.16 for stability and compatibility
 python-3.9.16 

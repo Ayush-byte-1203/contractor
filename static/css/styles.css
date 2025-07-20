@@ -1,77 +1,146 @@
-/* Reset and Base Styles */
+/**
+ * BuildPro Connect - Main Stylesheet
+ * ===================================
+ * 
+ * This file contains all the styling for the BuildPro Connect website.
+ * It provides a modern, responsive design with smooth animations and
+ * professional appearance.
+ * 
+ * Features:
+ * - Responsive design for all devices
+ * - Modern gradient backgrounds
+ * - Smooth animations and transitions
+ * - Professional color scheme
+ * - Mobile-first approach
+ * - Accessibility considerations
+ * 
+ * Color Palette:
+ * - Primary: #e74c3c (Red)
+ * - Secondary: #2c3e50 (Dark Blue)
+ * - Accent: #667eea to #764ba2 (Gradient)
+ * - Background: #f8f9fa (Light Gray)
+ * - Text: #333 (Dark Gray)
+ * 
+ * Author: BuildPro Connect Team
+ * Version: 1.0.0
+ */
+
+/* ============================================================================
+   RESET AND BASE STYLES
+   ============================================================================ */
+
+/**
+ * CSS Reset
+ * Removes default browser styling for consistent appearance
+ */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/**
+ * Base Body Styles
+ * Sets up the main typography and color scheme
+ */
 body {
-    font-family: 'Inter', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    overflow-x: hidden;
+    font-family: 'Inter', sans-serif; /* Modern, clean font */
+    line-height: 1.6; /* Improved readability */
+    color: #333; /* Dark gray for good contrast */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
+/**
+ * Container Class
+ * Provides consistent max-width and centering for content
+ */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    max-width: 1200px; /* Maximum content width */
+    margin: 0 auto; /* Center content horizontally */
+    padding: 0 20px; /* Side padding for mobile */
 }
 
-/* Navigation */
+/* ============================================================================
+   NAVIGATION STYLES
+   ============================================================================ */
+
+/**
+ * Main Navigation Bar
+ * Fixed position navbar with glassmorphism effect
+ */
 .navbar {
-    position: fixed;
+    position: fixed; /* Stay at top when scrolling */
     top: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95); /* Semi-transparent white */
+    backdrop-filter: blur(10px); /* Glassmorphism effect */
+    z-index: 1000; /* Ensure navbar stays on top */
     padding: 1rem 0;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease; /* Smooth transitions */
 }
 
+/**
+ * Navigation Container
+ * Flexbox layout for navbar content
+ */
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Logo left, menu right */
     align-items: center;
 }
 
+/**
+ * Logo Styling
+ * Brand logo with icon and text
+ */
 .nav-logo {
     display: flex;
     align-items: center;
     font-size: 1.5rem;
     font-weight: 700;
-    color: #2c3e50;
+    color: #2c3e50; /* Dark blue for brand */
 }
 
 .nav-logo i {
     margin-right: 0.5rem;
-    color: #e74c3c;
+    color: #e74c3c; /* Red accent color */
 }
 
+/**
+ * Navigation Menu
+ * Horizontal list of navigation links
+ */
 .nav-menu {
     display: flex;
     list-style: none;
     align-items: center;
-    gap: 2rem;
+    gap: 2rem; /* Space between menu items */
 }
 
+/**
+ * Navigation Links
+ * Individual menu item styling
+ */
 .nav-link {
     text-decoration: none;
     color: #333;
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease; /* Smooth color transition */
 }
 
 .nav-link:hover {
-    color: #e74c3c;
+    color: #e74c3c; /* Red on hover */
 }
 
+/**
+ * Call-to-Action Button
+ * Primary action button in navigation
+ */
 .cta-button {
-    background: #e74c3c;
+    background: #e74c3c; /* Red background */
     color: white;
     border: none;
     padding: 0.75rem 1.5rem;
@@ -82,11 +151,15 @@ body {
 }
 
 .cta-button:hover {
-    background: #c0392b;
+    background: #c0392b; /* Darker red on hover */
 }
 
+/**
+ * Mobile Hamburger Menu
+ * Three-line menu icon for mobile devices
+ */
 .hamburger {
-    display: none;
+    display: none; /* Hidden on desktop */
     flex-direction: column;
     cursor: pointer;
 }
@@ -96,45 +169,72 @@ body {
     height: 3px;
     background: #333;
     margin: 3px 0;
-    transition: 0.3s;
+    transition: 0.3s; /* Smooth animation for menu toggle */
 }
 
-/* Hero Section */
+/* ============================================================================
+   HERO SECTION
+   ============================================================================ */
+
+/**
+ * Hero Section
+ * Full-height landing section with gradient background
+ */
 .hero {
-    min-height: 100vh;
+    min-height: 100vh; /* Full viewport height */
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Purple gradient */
     color: white;
-    padding: 100px 0 50px;
+    padding: 100px 0 50px; /* Top padding for navbar */
 }
 
+/**
+ * Hero Content
+ * Left side content with heading and buttons
+ */
 .hero-content {
     flex: 1;
     max-width: 600px;
 }
 
+/**
+ * Hero Heading
+ * Main title with large, bold typography
+ */
 .hero h1 {
     font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    line-height: 1.2;
+    line-height: 1.2; /* Tighter line height for large text */
 }
 
+/**
+ * Hero Description
+ * Subtitle text with reduced opacity
+ */
 .hero p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
-    opacity: 0.9;
+    opacity: 0.9; /* Slightly transparent for hierarchy */
 }
 
+/**
+ * Hero Buttons Container
+ * Flexbox layout for multiple buttons
+ */
 .hero-buttons {
     display: flex;
     gap: 1rem;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Wrap on smaller screens */
 }
 
+/**
+ * Primary Button
+ * Main call-to-action button
+ */
 .primary-btn {
-    background: #e74c3c;
+    background: #e74c3c; /* Red background */
     color: white;
     border: none;
     padding: 1rem 2rem;
@@ -146,10 +246,14 @@ body {
 }
 
 .primary-btn:hover {
-    background: #c0392b;
-    transform: translateY(-2px);
+    background: #c0392b; /* Darker red */
+    transform: translateY(-2px); /* Lift effect */
 }
 
+/**
+ * Secondary Button
+ * Alternative action button with border
+ */
 .secondary-btn {
     background: transparent;
     color: white;
@@ -164,9 +268,13 @@ body {
 
 .secondary-btn:hover {
     background: white;
-    color: #667eea;
+    color: #667eea; /* Purple text on white background */
 }
 
+/**
+ * Hero Image Section
+ * Right side image placeholder
+ */
 .hero-image {
     flex: 1;
     display: flex;
@@ -174,72 +282,119 @@ body {
     align-items: center;
 }
 
+/**
+ * Image Placeholder
+ * Temporary placeholder for hero image
+ */
 .image-placeholder {
     width: 400px;
     height: 300px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 4rem;
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.3); /* Muted icon color */
 }
 
-/* Services Section */
+/* ============================================================================
+   SERVICES SECTION
+   ============================================================================ */
+
+/**
+ * Services Section
+ * Light background section showcasing services
+ */
 .services {
     padding: 80px 0;
-    background: #f8f9fa;
+    background: #f8f9fa; /* Light gray background */
 }
 
+/**
+ * Services Section Heading
+ * Centered title for services
+ */
 .services h2 {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 3rem;
-    color: #2c3e50;
+    color: #2c3e50; /* Dark blue */
 }
 
+/**
+ * Services Grid
+ * CSS Grid layout for service cards
+ */
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
     gap: 2rem;
 }
 
+/**
+ * Service Card
+ * Individual service item with hover effects
+ */
 .service-card {
     background: white;
     padding: 2rem;
     border-radius: 10px;
     text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .service-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px); /* Lift on hover */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
 }
 
+/**
+ * Service Icon
+ * Font Awesome icon styling
+ */
 .service-card i {
     font-size: 3rem;
-    color: #e74c3c;
+    color: #e74c3c; /* Red accent */
     margin-bottom: 1rem;
 }
 
+/**
+ * Service Title
+ * Service name styling
+ */
 .service-card h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
     color: #2c3e50;
 }
 
+/**
+ * Service Description
+ * Service details text
+ */
 .service-card p {
     color: #666;
     line-height: 1.6;
 }
 
-/* Projects Section */
+/* ============================================================================
+   PROJECTS SECTION
+   ============================================================================ */
+
+/**
+ * Projects Section
+ * Showcase of completed and ongoing projects
+ */
 .projects {
     padding: 80px 0;
 }
 
+/**
+ * Projects Section Heading
+ * Centered title for projects
+ */
 .projects h2 {
     text-align: center;
     font-size: 2.5rem;
@@ -247,12 +402,20 @@ body {
     color: #2c3e50;
 }
 
+/**
+ * Projects Grid
+ * CSS Grid layout for project cards
+ */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2rem;
 }
 
+/**
+ * Project Card
+ * Individual project item with image and details
+ */
 .project-card {
     background: white;
     border-radius: 10px;
@@ -265,16 +428,24 @@ body {
     transform: translateY(-5px);
 }
 
+/**
+ * Project Image
+ * Image container with placeholder styling
+ */
 .project-image {
     height: 200px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 3rem;
     color: white;
+    font-size: 3rem;
 }
 
+/**
+ * Project Information
+ * Text content below project image
+ */
 .project-info {
     padding: 1.5rem;
 }
@@ -290,21 +461,37 @@ body {
     margin-bottom: 1rem;
 }
 
+/**
+ * Project Type Badge
+ * Category indicator for projects
+ */
 .project-type {
+    display: inline-block;
     background: #e74c3c;
     color: white;
     padding: 0.25rem 0.75rem;
-    border-radius: 20px;
+    border-radius: 15px;
     font-size: 0.8rem;
     font-weight: 600;
 }
 
-/* About Section */
+/* ============================================================================
+   ABOUT SECTION
+   ============================================================================ */
+
+/**
+ * About Section
+ * Company information and statistics
+ */
 .about {
     padding: 80px 0;
     background: #f8f9fa;
 }
 
+/**
+ * About Content Layout
+ * Two-column layout for text and image
+ */
 .about-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -312,6 +499,10 @@ body {
     align-items: center;
 }
 
+/**
+ * About Text Content
+ * Company description and information
+ */
 .about-text h2 {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
@@ -322,15 +513,24 @@ body {
     font-size: 1.1rem;
     color: #666;
     margin-bottom: 2rem;
-    line-height: 1.8;
+    line-height: 1.7;
 }
 
+/**
+ * Statistics Section
+ * Key metrics display
+ */
 .stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
+    margin-top: 3rem;
 }
 
+/**
+ * Individual Stat Item
+ * Single statistic with number and label
+ */
 .stat {
     text-align: center;
 }
@@ -346,28 +546,44 @@ body {
     font-weight: 500;
 }
 
+/**
+ * About Image
+ * Right side image placeholder
+ */
 .about-image {
     display: flex;
     justify-content: center;
 }
 
 .about-image .image-placeholder {
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     height: 300px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 4rem;
     color: white;
+    font-size: 4rem;
 }
 
-/* Contact Section */
+/* ============================================================================
+   CONTACT SECTION
+   ============================================================================ */
+
+/**
+ * Contact Section
+ * Contact information and form
+ */
 .contact {
     padding: 80px 0;
 }
 
+/**
+ * Contact Section Heading
+ * Centered title for contact section
+ */
 .contact h2 {
     text-align: center;
     font-size: 2.5rem;
@@ -375,18 +591,30 @@ body {
     color: #2c3e50;
 }
 
+/**
+ * Contact Content Layout
+ * Two-column layout for info and form
+ */
 .contact-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
 }
 
+/**
+ * Contact Information
+ * Company contact details
+ */
 .contact-info {
     display: flex;
     flex-direction: column;
     gap: 2rem;
 }
 
+/**
+ * Contact Item
+ * Individual contact detail with icon
+ */
 .contact-item {
     display: flex;
     align-items: center;
@@ -409,19 +637,30 @@ body {
     color: #666;
 }
 
+/**
+ * Contact Form
+ * Contact form styling
+ */
 .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
+/**
+ * Form Input Fields
+ * Styling for form inputs and textarea
+ */
 .contact-form input,
 .contact-form textarea {
+    width: 100%;
     padding: 1rem;
-    border: 1px solid #ddd;
+    margin-bottom: 1rem;
+    border: 2px solid #ddd;
     border-radius: 5px;
     font-size: 1rem;
-    font-family: inherit;
+    transition: border-color 0.3s ease;
 }
 
 .contact-form input:focus,
@@ -430,20 +669,35 @@ body {
     border-color: #e74c3c;
 }
 
-/* Footer */
+/* ============================================================================
+   FOOTER
+   ============================================================================ */
+
+/**
+ * Footer Section
+ * Site footer with links and information
+ */
 .footer {
     background: #2c3e50;
     color: white;
-    padding: 50px 0 20px;
+    padding: 3rem 0 1rem;
 }
 
+/**
+ * Footer Content Layout
+ * Multi-column layout for footer sections
+ */
 .footer-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: 2fr 1fr 1fr 1fr;
     gap: 2rem;
     margin-bottom: 2rem;
 }
 
+/**
+ * Footer Logo
+ * Brand logo in footer
+ */
 .footer-logo {
     display: flex;
     align-items: center;
@@ -457,11 +711,19 @@ body {
     color: #e74c3c;
 }
 
+/**
+ * Footer Section Headings
+ * Column titles in footer
+ */
 .footer-section h3 {
     margin-bottom: 1rem;
     color: #e74c3c;
 }
 
+/**
+ * Footer Links List
+ * Unordered list styling for footer links
+ */
 .footer-section ul {
     list-style: none;
 }
@@ -477,22 +739,37 @@ body {
 }
 
 .footer-section ul li a:hover {
-    color: white;
+    color: #e74c3c;
 }
 
+/**
+ * Footer Description
+ * Company description in footer
+ */
 .footer-section p {
     color: #bdc3c7;
-    margin-bottom: 0.5rem;
+    line-height: 1.6;
 }
 
+/**
+ * Footer Bottom
+ * Copyright and legal information
+ */
 .footer-bottom {
-    text-align: center;
-    padding-top: 2rem;
     border-top: 1px solid #34495e;
+    padding-top: 1rem;
+    text-align: center;
     color: #bdc3c7;
 }
 
-/* Modal */
+/* ============================================================================
+   MODAL STYLES
+   ============================================================================ */
+
+/**
+ * Modal Overlay
+ * Background overlay for modal windows
+ */
 .modal {
     display: none;
     position: fixed;
@@ -502,9 +779,13 @@ body {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
+    animation: modalSlideIn 0.3s ease;
 }
 
+/**
+ * Modal Content
+ * Modal window content container
+ */
 .modal-content {
     background-color: white;
     margin: 5% auto;
@@ -513,9 +794,13 @@ body {
     width: 90%;
     max-width: 500px;
     position: relative;
-    animation: modalSlideIn 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
+/**
+ * Modal Animation
+ * Slide-in animation for modal appearance
+ */
 @keyframes modalSlideIn {
     from {
         opacity: 0;
@@ -527,24 +812,38 @@ body {
     }
 }
 
+/**
+ * Close Button
+ * X button to close modal
+ */
 .close {
     position: absolute;
     right: 1rem;
     top: 1rem;
     font-size: 2rem;
+    font-weight: bold;
     cursor: pointer;
-    color: #666;
+    color: #999;
+    transition: color 0.3s ease;
 }
 
 .close:hover {
     color: #e74c3c;
 }
 
+/**
+ * Modal Heading
+ * Title within modal
+ */
 .modal h2 {
     margin-bottom: 1.5rem;
     color: #2c3e50;
 }
 
+/**
+ * Form Group
+ * Container for form fields
+ */
 .form-group {
     margin-bottom: 1rem;
 }
@@ -554,10 +853,10 @@ body {
 .form-group textarea {
     width: 100%;
     padding: 0.75rem;
-    border: 1px solid #ddd;
+    border: 2px solid #ddd;
     border-radius: 5px;
     font-size: 1rem;
-    font-family: inherit;
+    transition: border-color 0.3s ease;
 }
 
 .form-group input:focus,
@@ -567,15 +866,23 @@ body {
     border-color: #e74c3c;
 }
 
-/* Responsive Design */
+/* ============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================ */
+
+/**
+ * Tablet and Small Desktop (max-width: 768px)
+ * Adjusts layout for medium-sized screens
+ */
 @media (max-width: 768px) {
+    /* Mobile Navigation */
     .hamburger {
-        display: flex;
+        display: flex; /* Show hamburger on mobile */
     }
 
     .nav-menu {
         position: fixed;
-        left: -100%;
+        left: -100%; /* Hide off-screen */
         top: 70px;
         flex-direction: column;
         background-color: white;
@@ -587,9 +894,10 @@ body {
     }
 
     .nav-menu.active {
-        left: 0;
+        left: 0; /* Slide in from left */
     }
 
+    /* Hero Section Adjustments */
     .hero {
         flex-direction: column;
         text-align: center;
@@ -597,49 +905,50 @@ body {
     }
 
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2.5rem; /* Smaller text on mobile */
     }
 
     .hero-buttons {
         justify-content: center;
     }
 
+    /* Layout Adjustments */
     .about-content {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Single column */
         gap: 2rem;
     }
 
     .contact-content {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Single column */
         gap: 2rem;
     }
 
     .stats {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+        grid-template-columns: repeat(2, 1fr); /* Two columns */
     }
 
     .services-grid,
     .projects-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Single column */
     }
 
     .image-placeholder {
         width: 100%;
         max-width: 300px;
-        height: 200px;
     }
 
     .about-image .image-placeholder {
-        width: 100%;
-        max-width: 300px;
         height: 200px;
     }
 }
 
+/**
+ * Mobile Devices (max-width: 480px)
+ * Further adjustments for small mobile screens
+ */
 @media (max-width: 480px) {
     .hero h1 {
-        font-size: 2rem;
+        font-size: 2rem; /* Even smaller text */
     }
 
     .hero p {
@@ -647,13 +956,11 @@ body {
     }
 
     .hero-buttons {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: column; /* Stack buttons */
     }
 
     .primary-btn,
     .secondary-btn {
-        width: 100%;
-        max-width: 250px;
+        width: 100%; /* Full width buttons */
     }
 } 

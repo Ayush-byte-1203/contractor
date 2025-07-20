@@ -1,21 +1,52 @@
-services:
-  - type: web
-    name: buildpro-connect
-    env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn --bind 0.0.0.0:$PORT app:app
-    envVars:
-      - key: PYTHON_VERSION
-        value: 3.9.16
-      - key: PORT
-        value: 10000
-      - key: SECRET_KEY
-        generateValue: true
-    healthCheckPath: /api/stats
-    autoDeploy: true
+# BuildPro Connect - Render Deployment Configuration
+# =================================================
+#
+# This file defines the deployment configuration for Render.com
+# It creates both a web service (Flask app) and a PostgreSQL database
+# for the BuildPro Connect platform.
+#
+# Features:
+# - Automatic deployment from Git repository
+# - PostgreSQL database with connection string
+# - Environment variable management
+# - Health checks for monitoring
+# - Auto-scaling capabilities
+#
+# Author: BuildPro Connect Team
+# Version: 1.0.0
 
-  - type: pserv
-    name: buildpro-db
-    env: postgresql
-    plan: free
-    ipAllowList: [] 
+services:
+  # Web Service Configuration
+  # This service runs the Flask application
+  - type: web                    # Service type: web application
+    name: buildpro-connect       # Service name (will be part of the URL)
+    env: python                  # Environment: Python runtime
+    buildCommand: pip install -r requirements.txt  # Install dependencies
+    startCommand: gunicorn --bind 0.0.0.0:$PORT app:app  # Start WSGI server
+    
+    # Environment Variables
+    # These variables are available to the application at runtime
+    envVars:
+      - key: PYTHON_VERSION      # Python version specification
+        value: 3.9.16           # Specific Python version for consistency
+      - key: PORT               # Port for the application to listen on
+        value: 10000            # Default port (Render will override with $PORT)
+      - key: SECRET_KEY         # Flask secret key for security
+        generateValue: true     # Render will generate a secure random key
+    
+    # Health Check Configuration
+    # Render uses this endpoint to monitor service health
+    healthCheckPath: /api/stats  # Endpoint that returns 200 if service is healthy
+    autoDeploy: true            # Automatically deploy when code is pushed to Git
+
+  # PostgreSQL Database Service
+  # This service provides the database for the application
+  - type: pserv                 # Service type: PostgreSQL database
+    name: buildpro-db           # Database service name
+    env: postgresql             # Environment: PostgreSQL
+    plan: free                  # Database plan (free tier for development)
+    ipAllowList: []             # IP restrictions (empty = allow all)
+    
+    # Note: The database connection string will be automatically
+    # provided to the web service as DATABASE_URL environment variable
+    # when both services are deployed together. 

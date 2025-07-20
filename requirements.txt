@@ -1,4 +1,29 @@
+# BuildPro Connect - Python Dependencies
+# =====================================
+#
+# This file lists all Python packages required by the BuildPro Connect application.
+# Each dependency is specified with a version constraint to ensure compatibility.
+#
+# To install all dependencies: pip install -r requirements.txt
+# To update dependencies: pip install -r requirements.txt --upgrade
+#
+# Author: BuildPro Connect Team
+# Version: 1.0.0
+
+# Web Framework
+# Flask is the main web framework for building the application
 Flask>=3.0.0
+
+# Cross-Origin Resource Sharing (CORS)
+# Allows the API to be accessed from different domains/origins
 Flask-CORS>=4.0.0
+
+# Production WSGI Server
+# Gunicorn is used to serve the Flask app in production
+# It's more robust than Flask's built-in development server
 gunicorn>=21.0.0
+
+# Database ORM (for future PostgreSQL integration)
+# SQLAlchemy provides database abstraction and ORM capabilities
+# Currently used for future database migrations
 SQLAlchemy>=2.0.0 
