@@ -9,11 +9,14 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'your-secret-key-here')
 CORS(app)
 
 # Database file
-DB_FILE = 'database.json'
+DB_FILE = 'data/database.json'
 
 # Initialize database
 def init_db():
     if not os.path.exists(DB_FILE):
+        # Create data directory if it doesn't exist
+        os.makedirs('data', exist_ok=True)
+        
         default_data = {
             'contacts': [],
             'quotes': [],
@@ -203,15 +206,33 @@ def init_db():
                 },
                 {
                     'id': 4,
+                    'name': 'Project Management',
+                    'description': 'Comprehensive project management from concept to completion.',
+                    'icon': 'fas fa-tasks',
+                    'category': 'management',
+                    'created_at': datetime.utcnow().isoformat()
+                },
+                {
+                    'id': 5,
                     'name': 'Design & Planning',
-                    'description': 'Architectural design and project planning services.',
+                    'description': 'Architectural design and detailed project planning services.',
                     'icon': 'fas fa-drafting-compass',
                     'category': 'design',
+                    'created_at': datetime.utcnow().isoformat()
+                },
+                {
+                    'id': 6,
+                    'name': 'Maintenance Services',
+                    'description': 'Ongoing maintenance and repair services for all property types.',
+                    'icon': 'fas fa-wrench',
+                    'category': 'maintenance',
                     'created_at': datetime.utcnow().isoformat()
                 }
             ]
         }
-        save_db(default_data)
+        
+        with open(DB_FILE, 'w') as f:
+            json.dump(default_data, f, indent=2)
 
 def load_db():
     try:
@@ -228,15 +249,27 @@ def save_db(data):
 # Routes
 @app.route('/')
 def index():
-    return send_from_directory('.', 'index.html')
-
-@app.route('/<path:filename>')
-def serve_static(filename):
-    return send_from_directory('.', filename)
+    return render_template('index.html')
 
 @app.route('/admin')
 def admin():
-    return send_from_directory('.', 'admin.html')
+    return render_template('admin.html')
+
+@app.route('/services')
+def services():
+    return render_template('services.html')
+
+@app.route('/projects')
+def projects():
+    return render_template('projects.html')
+
+@app.route('/workers')
+def workers():
+    return render_template('workers.html')
+
+@app.route('/contractors')
+def contractors():
+    return render_template('contractors.html')
 
 # API Routes
 @app.route('/api/contact', methods=['POST'])
@@ -310,7 +343,9 @@ def get_stats():
             'total_projects': len(db_data['projects']),
             'total_quotes': len(db_data['quotes']),
             'total_contacts': len(db_data['contacts']),
-            'completed_projects': len([p for p in db_data['projects'] if p.get('completion_date')])
+            'completed_projects': len([p for p in db_data['projects'] if p.get('status') == 'completed']),
+            'total_contractors': len(db_data['contractors']),
+            'total_workers': len(db_data['workers'])
         }
         
         return jsonify(stats), 200

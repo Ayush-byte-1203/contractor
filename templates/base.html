@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}BuildPro Connect - Professional Construction Services{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-hammer"></i>
+                <span>BuildPro Connect</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="{{ url_for('index') }}" class="nav-link">Home</a></li>
+                <li><a href="{{ url_for('contractors') }}" class="nav-link">Contractors</a></li>
+                <li><a href="{{ url_for('workers') }}" class="nav-link">Workers</a></li>
+                <li><a href="{{ url_for('projects') }}" class="nav-link">Projects</a></li>
+                <li><a href="{{ url_for('services') }}" class="nav-link">Services</a></li>
+                <li><a href="{{ url_for('index') }}#about" class="nav-link">About</a></li>
+                <li><a href="{{ url_for('index') }}#contact" class="nav-link">Contact</a></li>
+                <li><button class="cta-button" onclick="openModal('quoteModal')">Get Quote</button></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-hammer"></i>
+                        <span>BuildPro Connect</span>
+                    </div>
+                    <p>Building excellence, one project at a time.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="{{ url_for('contractors') }}">Contractors</a></li>
+                        <li><a href="{{ url_for('workers') }}">Workers</a></li>
+                        <li><a href="{{ url_for('projects') }}">Projects</a></li>
+                        <li><a href="{{ url_for('services') }}">Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>+1 (555) 123-4567</p>
+                    <p>info@buildproconnect.com</p>
+                    <p>123 Construction Ave, Building City, BC 12345</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 BuildPro Connect. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Quote Modal -->
+    <div id="quoteModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('quoteModal')">&times;</span>
+            <h2>Get Your Free Quote</h2>
+            <form id="quoteForm">
+                <div class="form-group">
+                    <input type="text" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Email Address" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Phone Number" required>
+                </div>
+                <div class="form-group">
+                    <select required>
+                        <option value="">Select Service Type</option>
+                        <option value="residential">Residential Construction</option>
+                        <option value="commercial">Commercial Projects</option>
+                        <option value="renovation">Renovation & Remodeling</option>
+                        <option value="design">Design & Planning</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Project Description" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Project Budget (Optional)">
+                </div>
+                <button type="submit" class="primary-btn">Submit Quote Request</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html> 

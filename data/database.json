@@ -1,253 +1,252 @@
 {
   "contacts": [],
   "quotes": [],
-  "contractors": [
+  "users": [
     {
       "id": 1,
-      "name": "Smith Construction Co.",
-      "email": "info@smithconstruction.com",
-      "phone": "+1 (555) 123-4567",
-      "specialties": [
-        "Residential",
-        "Renovation"
-      ],
-      "rating": 4.8,
-      "experience_years": 15,
-      "location": "Building City, BC",
-      "hourly_rate": 75,
-      "availability": "Available",
-      "completed_projects": 45,
-      "description": "Leading residential construction company with 15+ years of experience.",
-      "image_url": "/static/images/contractor1.jpg",
-      "status": "active",
-      "created_at": "2025-07-19T13:49:12.095557"
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john@example.com",
+      "password": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
+      "phone": "(555) 123-4567",
+      "userType": "client",
+      "bio": "Looking for quality construction services",
+      "location": "New York, NY",
+      "created_at": "2025-07-19T12:39:35.928628"
     },
     {
       "id": 2,
-      "name": "Johnson Builders",
-      "email": "contact@johnsonbuilders.com",
-      "phone": "+1 (555) 234-5678",
-      "specialties": [
-        "Commercial",
-        "Industrial"
-      ],
-      "rating": 4.6,
-      "experience_years": 12,
-      "location": "Construction Town, BC",
-      "hourly_rate": 85,
-      "availability": "Available",
-      "completed_projects": 32,
-      "description": "Specialized in commercial and industrial construction projects.",
-      "image_url": "/static/images/contractor2.jpg",
-      "status": "active",
-      "created_at": "2025-07-19T13:49:12.095911"
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "email": "jane@example.com",
+      "password": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
+      "phone": "(555) 234-5678",
+      "userType": "contractor",
+      "bio": "Professional contractor with 10+ years experience",
+      "location": "Los Angeles, CA",
+      "created_at": "2025-07-19T12:39:35.928674"
     },
     {
       "id": 3,
-      "name": "Green Development",
-      "email": "hello@greendevelopment.com",
-      "phone": "+1 (555) 345-6789",
+      "firstName": "Mike",
+      "lastName": "Johnson",
+      "email": "mike@example.com",
+      "password": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
+      "phone": "(555) 345-6789",
+      "userType": "worker",
+      "bio": "Skilled carpenter and electrician",
+      "location": "Chicago, IL",
+      "created_at": "2025-07-19T12:39:35.928692"
+    },
+    {
+      "id": 4,
+      "firstName": "Test",
+      "lastName": "User",
+      "email": "test@example.com",
+      "password": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
+      "phone": "(555) 999-8888",
+      "userType": "client",
+      "bio": "",
+      "location": "",
+      "created_at": "2025-07-19T12:40:56.510069"
+    },
+    {
+      "id": 5,
+      "firstName": "Ayush",
+      "lastName": "Pancholi",
+      "email": "ayushpancholi3@gmail.com",
+      "password": "6e9f314571b5e8dad2517321c0e57c18f8c648e07ed107d37d9ff743fbcf6fc7",
+      "phone": "8320978291",
+      "userType": "client",
+      "bio": "",
+      "location": "",
+      "created_at": "2025-07-19T12:47:08.760612"
+    }
+  ],
+  "contractors": [
+    {
+      "id": 1,
+      "name": "ABC Construction Co.",
+      "email": "info@abcconstruction.com",
+      "phone": "(555) 123-4567",
       "specialties": [
-        "Sustainable",
-        "Green Building"
+        "residential",
+        "commercial"
+      ],
+      "rating": 4.8,
+      "experience_years": 15,
+      "completed_projects": 45,
+      "location": "New York, NY",
+      "description": "Leading construction company with 15+ years of experience in residential and commercial projects.",
+      "image_url": "/static/images/contractor1.jpg",
+      "status": "active",
+      "created_at": "2025-07-19T12:39:35.928707"
+    },
+    {
+      "id": 2,
+      "name": "Elite Builders LLC",
+      "email": "contact@elitebuilders.com",
+      "phone": "(555) 234-5678",
+      "specialties": [
+        "residential",
+        "renovation"
+      ],
+      "rating": 4.6,
+      "experience_years": 12,
+      "completed_projects": 38,
+      "location": "Los Angeles, CA",
+      "description": "Specialized in luxury residential construction and high-end renovations.",
+      "image_url": "/static/images/contractor2.jpg",
+      "status": "active",
+      "created_at": "2025-07-19T12:39:35.928718"
+    },
+    {
+      "id": 3,
+      "name": "Commercial Pro Builders",
+      "email": "info@commercialpro.com",
+      "phone": "(555) 345-6789",
+      "specialties": [
+        "commercial",
+        "industrial"
       ],
       "rating": 4.9,
-      "experience_years": 8,
-      "location": "Eco City, BC",
-      "hourly_rate": 90,
-      "availability": "Available",
-      "completed_projects": 28,
-      "description": "Eco-friendly construction and sustainable building solutions.",
+      "experience_years": 20,
+      "completed_projects": 67,
+      "location": "Chicago, IL",
+      "description": "Expert commercial and industrial construction with focus on large-scale projects.",
       "image_url": "/static/images/contractor3.jpg",
       "status": "active",
-      "created_at": "2025-07-19T13:49:12.096017"
+      "created_at": "2025-07-19T12:39:35.928727"
     }
   ],
   "workers": [
     {
       "id": 1,
-      "name": "Mike Johnson",
-      "email": "mike@example.com",
-      "phone": "+1 (555) 234-5678",
+      "name": "John Smith",
+      "email": "john.smith@email.com",
+      "phone": "(555) 111-2222",
       "specialties": [
-        "Electrical",
-        "Plumbing"
+        "carpentry",
+        "electrical"
       ],
       "experience_years": 8,
-      "hourly_rate": 45,
-      "availability": "Available",
-      "contractor_id": 1,
       "rating": 4.7,
-      "location": "Building City, BC",
+      "location": "New York, NY",
+      "hourly_rate": 45,
+      "availability": "full-time",
+      "contractor_id": 1,
       "image_url": "/static/images/worker1.jpg",
-      "status": "active",
-      "created_at": "2025-07-19T13:49:12.096041"
+      "status": "available",
+      "created_at": "2025-07-19T12:39:35.928849"
     },
     {
       "id": 2,
-      "name": "Sarah Williams",
-      "email": "sarah@example.com",
-      "phone": "+1 (555) 345-6789",
+      "name": "Maria Garcia",
+      "email": "maria.garcia@email.com",
+      "phone": "(555) 222-3333",
       "specialties": [
-        "Carpentry",
-        "Woodworking"
+        "plumbing",
+        "hvac"
       ],
       "experience_years": 12,
+      "rating": 4.8,
+      "location": "Los Angeles, CA",
       "hourly_rate": 55,
-      "availability": "Available",
-      "contractor_id": 1,
-      "rating": 4.9,
-      "location": "Building City, BC",
+      "availability": "full-time",
+      "contractor_id": 2,
       "image_url": "/static/images/worker2.jpg",
-      "status": "active",
-      "created_at": "2025-07-19T13:49:12.096065"
+      "status": "available",
+      "created_at": "2025-07-19T12:39:35.928866"
     },
     {
       "id": 3,
-      "name": "David Chen",
-      "email": "david@example.com",
-      "phone": "+1 (555) 456-7890",
+      "name": "Mike Johnson",
+      "email": "mike.johnson@email.com",
+      "phone": "(555) 333-4444",
       "specialties": [
-        "Masonry",
-        "Concrete"
+        "masonry",
+        "concrete"
       ],
-      "experience_years": 10,
+      "experience_years": 15,
+      "rating": 4.9,
+      "location": "Chicago, IL",
       "hourly_rate": 50,
-      "availability": "Available",
-      "contractor_id": 2,
-      "rating": 4.6,
-      "location": "Construction Town, BC",
-      "image_url": "/static/images/worker3.jpg",
-      "status": "active",
-      "created_at": "2025-07-19T13:49:12.096103"
-    },
-    {
-      "id": 4,
-      "name": "Lisa Rodriguez",
-      "email": "lisa@example.com",
-      "phone": "+1 (555) 567-8901",
-      "specialties": [
-        "HVAC",
-        "Heating"
-      ],
-      "experience_years": 6,
-      "hourly_rate": 40,
-      "availability": "Available",
-      "contractor_id": 2,
-      "rating": 4.5,
-      "location": "Construction Town, BC",
-      "image_url": "/static/images/worker4.jpg",
-      "status": "active",
-      "created_at": "2025-07-19T13:49:12.096115"
-    },
-    {
-      "id": 5,
-      "name": "Tom Anderson",
-      "email": "tom@example.com",
-      "phone": "+1 (555) 678-9012",
-      "specialties": [
-        "Roofing",
-        "Siding"
-      ],
-      "experience_years": 14,
-      "hourly_rate": 60,
-      "availability": "Available",
+      "availability": "full-time",
       "contractor_id": 3,
-      "rating": 4.8,
-      "location": "Eco City, BC",
-      "image_url": "/static/images/worker5.jpg",
-      "status": "active",
-      "created_at": "2025-07-19T13:49:12.096121"
+      "image_url": "/static/images/worker3.jpg",
+      "status": "available",
+      "created_at": "2025-07-19T12:39:35.928877"
     }
   ],
   "projects": [
     {
       "id": 1,
       "title": "Modern Family Home",
-      "description": "A stunning 3,200 sq ft custom home featuring contemporary design with smart home integration. This luxury residence includes 4 bedrooms, 3.5 bathrooms, gourmet kitchen, and smart automation throughout.",
-      "category": "Residential",
+      "description": "3,200 sq ft custom home with smart home features",
+      "category": "residential",
+      "image_url": "/static/images/project1.jpg",
       "size": "3,200 sq ft",
       "location": "Suburban Area",
       "budget": "$750,000",
-      "status": "completed",
-      "progress": 100,
       "start_date": "2024-01-15",
       "expected_completion": "2024-08-15",
+      "status": "in-progress",
+      "progress": 65,
       "contractor_id": 1,
       "assigned_workers": [
         1,
         2
       ],
-      "client_name": "John and Sarah Davis",
-      "client_email": "john.davis@email.com",
-      "client_phone": "+1 (555) 111-2222",
-      "image_url": "/static/images/project1.jpg",
-      "features": [
-        "Smart Home Integration",
-        "Luxury Kitchen",
-        "4 Bedrooms",
-        "Energy Efficient"
-      ],
-      "created_at": "2025-07-19T13:49:12.096128"
+      "client_name": "Sarah and Tom Wilson",
+      "client_email": "wilson.family@email.com",
+      "client_phone": "(555) 444-5555",
+      "created_at": "2025-07-19T12:39:35.928891"
     },
     {
       "id": 2,
       "title": "Office Complex",
-      "description": "A modern 15,000 sq ft office complex designed for tech companies. Features open floor plans, collaborative spaces, energy-efficient systems, and state-of-the-art amenities for the modern workforce.",
-      "category": "Commercial",
+      "description": "15,000 sq ft modern office building",
+      "category": "commercial",
+      "image_url": "/static/images/project2.jpg",
       "size": "15,000 sq ft",
       "location": "Downtown",
       "budget": "$2,500,000",
-      "status": "in-progress",
-      "progress": 65,
       "start_date": "2024-03-01",
-      "expected_completion": "2024-12-15",
-      "contractor_id": 2,
+      "expected_completion": "2024-12-01",
+      "status": "in-progress",
+      "progress": 40,
+      "contractor_id": 3,
       "assigned_workers": [
-        3,
-        4
+        3
       ],
-      "client_name": "TechCorp Solutions",
+      "client_name": "TechCorp Inc.",
       "client_email": "projects@techcorp.com",
-      "client_phone": "+1 (555) 333-4444",
-      "image_url": "/static/images/project2.jpg",
-      "features": [
-        "Open Floor Plan",
-        "Energy Efficient",
-        "Tech Ready",
-        "Collaborative Spaces"
-      ],
-      "created_at": "2025-07-19T13:49:12.096135"
+      "client_phone": "(555) 555-6666",
+      "created_at": "2025-07-19T12:39:35.928904"
     },
     {
       "id": 3,
       "title": "Retail Center",
-      "description": "A multi-tenant retail development spanning 25,000 sq ft with modern storefronts, ample parking, and pedestrian-friendly design. Home to boutique shops, restaurants, and service businesses.",
-      "category": "Commercial",
+      "description": "Multi-tenant retail development",
+      "category": "commercial",
+      "image_url": "/static/images/project3.jpg",
       "size": "25,000 sq ft",
       "location": "Shopping District",
       "budget": "$3,200,000",
+      "start_date": "2024-02-01",
+      "expected_completion": "2024-10-01",
       "status": "completed",
       "progress": 100,
-      "start_date": "2023-09-01",
-      "expected_completion": "2024-06-15",
-      "contractor_id": 2,
+      "contractor_id": 3,
       "assigned_workers": [
-        3,
-        4,
-        5
+        1,
+        2,
+        3
       ],
-      "client_name": "Retail Development Group",
-      "client_email": "info@retaildev.com",
-      "client_phone": "+1 (555) 555-6666",
-      "image_url": "/static/images/project3.jpg",
-      "features": [
-        "Multi-Tenant",
-        "Ample Parking",
-        "Modern Design",
-        "Pedestrian Friendly"
-      ],
-      "created_at": "2025-07-19T13:49:12.096143"
+      "client_name": "Mall Development Group",
+      "client_email": "info@malldev.com",
+      "client_phone": "(555) 666-7777",
+      "created_at": "2025-07-19T12:39:35.928915"
     }
   ],
   "services": [
@@ -256,64 +255,32 @@
       "name": "Residential Construction",
       "description": "Custom homes, renovations, and additions tailored to your lifestyle.",
       "icon": "fas fa-home",
-      "category": "Construction",
-      "price_range": "$200,000 - $1,500,000",
-      "duration": "6-18 months",
-      "features": [
-        "Custom Design",
-        "Quality Materials",
-        "Professional Team",
-        "Warranty"
-      ],
-      "created_at": "2025-07-19T13:49:12.096148"
+      "category": "residential",
+      "created_at": "2025-07-19T12:39:35.928927"
     },
     {
       "id": 2,
       "name": "Commercial Projects",
       "description": "Office buildings, retail spaces, and industrial facilities.",
       "icon": "fas fa-building",
-      "category": "Construction",
-      "price_range": "$500,000 - $5,000,000",
-      "duration": "12-36 months",
-      "features": [
-        "Modern Design",
-        "Energy Efficient",
-        "Compliance",
-        "Project Management"
-      ],
-      "created_at": "2025-07-19T13:49:12.096153"
+      "category": "commercial",
+      "created_at": "2025-07-19T12:39:35.928938"
     },
     {
       "id": 3,
       "name": "Renovation & Remodeling",
       "description": "Transform your existing space with our renovation expertise.",
       "icon": "fas fa-tools",
-      "category": "Renovation",
-      "price_range": "$50,000 - $500,000",
-      "duration": "2-12 months",
-      "features": [
-        "Design Consultation",
-        "Quality Workmanship",
-        "Timeline Management",
-        "Cleanup"
-      ],
-      "created_at": "2025-07-19T13:49:12.096158"
+      "category": "renovation",
+      "created_at": "2025-07-19T12:39:35.928947"
     },
     {
       "id": 4,
       "name": "Design & Planning",
       "description": "Architectural design and project planning services.",
       "icon": "fas fa-drafting-compass",
-      "category": "Design",
-      "price_range": "$10,000 - $100,000",
-      "duration": "1-6 months",
-      "features": [
-        "3D Modeling",
-        "Permit Assistance",
-        "Material Selection",
-        "Cost Estimation"
-      ],
-      "created_at": "2025-07-19T13:49:12.096163"
+      "category": "design",
+      "created_at": "2025-07-19T12:39:35.928958"
     }
   ]
 }
