@@ -1,4 +1,4 @@
-# BuildPro Connect - Python Runtime Specification
+# Paramarsh Construction - Python Runtime Specification
 # ==============================================
 #
 # This file specifies the Python version to use for the application.
@@ -7,7 +7,7 @@
 # The version specified here should match the version used in development
 # and should be compatible with all dependencies in requirements.txt.
 #
-# Author: BuildPro Connect Team
+# Author: Paramarsh Construction Team
 # Version: 1.0.0
 
 # Python version for the application

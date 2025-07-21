@@ -1,9 +1,9 @@
-# BuildPro Connect - Render Deployment Configuration
+# Paramarsh Construction - Render Deployment Configuration
 # =================================================
 #
 # This file defines the deployment configuration for Render.com
 # It creates both a web service (Flask app) and a PostgreSQL database
-# for the BuildPro Connect platform.
+# for the Paramarsh Construction platform.
 #
 # Features:
 # - Automatic deployment from Git repository
@@ -12,14 +12,14 @@
 # - Health checks for monitoring
 # - Auto-scaling capabilities
 #
-# Author: BuildPro Connect Team
+# Author: Paramarsh Construction Team
 # Version: 1.0.0
 
 services:
   # Web Service Configuration
   # This service runs the Flask application
   - type: web                    # Service type: web application
-    name: buildpro-connect       # Service name (will be part of the URL)
+    name: paramarsh-construction              # Service name (will be part of the URL)
     env: python                  # Environment: Python runtime
     buildCommand: pip install -r requirements.txt  # Install dependencies
     startCommand: gunicorn --bind 0.0.0.0:$PORT app:app  # Start WSGI server
@@ -42,7 +42,7 @@ services:
   # PostgreSQL Database Service
   # This service provides the database for the application
   - type: pserv                 # Service type: PostgreSQL database
-    name: buildpro-db           # Database service name
+    name: paramarsh-construction-db          # Database service name
     env: postgresql             # Environment: PostgreSQL
     plan: free                  # Database plan (free tier for development)
     ipAllowList: []             # IP restrictions (empty = allow all)

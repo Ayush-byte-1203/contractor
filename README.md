@@ -1,8 +1,8 @@
-# BuildPro Connect 🏗️
+# Paramarsh Construction 🏗️
 
 A modern construction services platform that connects contractors, workers, and clients through a comprehensive web application. Built with Flask backend and responsive frontend design.
 
-![BuildPro Connect](https://img.shields.io/badge/Flask-3.0+-blue.svg)
+![Paramarsh Construction](https://img.shields.io/badge/Flask-3.0+-blue.svg)
 ![Python](https://img.shields.io/badge/Python-3.8+-green.svg)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
@@ -302,6 +302,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**BuildPro Connect** - Connecting construction professionals with clients, one project at a time. 🏗️✨
+**Paramarsh Construction** - Connecting construction professionals with clients, one project at a time. 🏗️✨
 
 *Built with ❤️ using Flask and modern web technologies* 

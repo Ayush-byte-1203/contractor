@@ -1,5 +1,5 @@
 """
-BuildPro Connect - Configuration Module
+Paramarsh Construction - Configuration Module
 =======================================
 
 This module contains configuration classes for different environments
@@ -9,7 +9,7 @@ manage application settings.
 The configuration system allows for environment-specific settings while
 maintaining a consistent interface across all environments.
 
-Author: BuildPro Connect Team
+Author: Paramarsh Construction Team
 Version: 1.0.0
 """
 

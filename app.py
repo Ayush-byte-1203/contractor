@@ -1,8 +1,8 @@
 """
-BuildPro Connect - Main Flask Application
-=========================================
+Paramarsh Construction - Main Flask Application
+========================================
 
-This is the main Flask application for the BuildPro Connect platform.
+This is the main Flask application for the Paramarsh Construction platform.
 It provides a comprehensive construction services marketplace that connects
 contractors, workers, and clients through a web-based interface.
 
@@ -14,7 +14,7 @@ Features:
 - Admin panel for data management
 - RESTful API endpoints
 
-Author: BuildPro Connect Team
+Author: Paramarsh Construction Team
 Version: 1.0.0
 """
 

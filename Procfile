@@ -1,4 +1,4 @@
-# BuildPro Connect - Procfile
+# Paramarsh Construction - Procfile
 # ==========================
 #
 # This file tells the web server (like Heroku, Render, etc.) how to run the application.
@@ -7,7 +7,7 @@
 # The 'web' process type is the main application that handles HTTP requests.
 # Other process types (like 'worker' for background jobs) can be added here.
 #
-# Author: BuildPro Connect Team
+# Author: Paramarsh Construction Team
 # Version: 1.0.0
 
 # Web process - runs the main Flask application

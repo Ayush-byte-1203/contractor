@@ -1,8 +1,8 @@
 /**
- * BuildPro Connect - Main JavaScript File
+ * Paramarsh Construction - Main JavaScript File
  * =======================================
  * 
- * This file contains all the interactive functionality for the BuildPro Connect
+ * This file contains all the interactive functionality for the Paramars Connect
  * website. It handles navigation, form submissions, animations, and user interactions.
  * 
  * Features:
@@ -14,7 +14,7 @@
  * - Counter animations for statistics
  * - Loading states and user feedback
  * 
- * Author: BuildPro Connect Team
+ * Author: Paramarsh Construction Team
  * Version: 1.0.0
  */
 
@@ -456,7 +456,7 @@ function createPreloader() {
     preloader.innerHTML = `
         <div class="preloader-content">
             <div class="spinner"></div>
-            <p>Loading BuildPro Connect...</p>
+            <p>Loading Paramarsh Construction...</p>
         </div>
     `;
     
@@ -488,7 +488,7 @@ document.addEventListener('DOMContentLoaded', () => {
     createPreloader();
     
     // Initialize any additional features here
-    console.log('BuildPro Connect - JavaScript initialized successfully');
+    console.log('Paramarsh Construction - JavaScript initialized successfully');
 });
 
 /**

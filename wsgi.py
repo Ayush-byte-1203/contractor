@@ -1,9 +1,9 @@
 """
-BuildPro Connect - WSGI Entry Point
+Paramarsh Construction - WSGI Entry Point
 ===================================
 
 This file serves as the WSGI (Web Server Gateway Interface) entry point
-for production deployment of the BuildPro Connect application.
+for production deployment of the Paramarsh application.
 
 WSGI is a specification that describes how a web server communicates with
 web applications. This file allows the application to be deployed using
@@ -13,7 +13,7 @@ Usage:
 - Development: python app.py
 - Production: gunicorn wsgi:app
 
-Author: BuildPro Connect Team
+Author: Paramarsh Construction Team
 Version: 1.0.0
 """
 
